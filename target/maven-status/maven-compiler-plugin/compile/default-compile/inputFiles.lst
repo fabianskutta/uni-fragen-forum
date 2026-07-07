@@ -1,0 +1,17 @@
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/FragenForum.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/controller/AntwortController.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/controller/FragenController.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/controller/KommentarController.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/controller/VoteController.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/model/Antwort.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/model/Frage.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/model/Kommentar.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/model/Vote.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/repository/AntwortRepository.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/repository/FragenRepository.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/repository/KommentarRepository.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/repository/VoteRepository.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/service/AntwortService.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/service/FragenService.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/service/KommentarService.java
+/Users/fabianskutta/IdeaProjects/fragen-forum/src/main/java/fragenForum/service/VoteService.java

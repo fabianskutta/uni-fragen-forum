@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fragenübersicht</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <script th:src="@{/js/theme.js}"></script>
+</head>
+
+<body>
+
+<!-- Frage-stellen-Modal -->
+<div class="modal-overlay" id="frageModal" style="display:none">
+  <div class="modal-card">
+    <h2 class="modal-title">Neue Frage stellen</h2>
+    <form th:action="@{/fragen}" th:object="${neueFrage}" method="post" class="modal-form">
+      <input type="text" th:field="*{erstellerName}" placeholder="Dein Name..." required maxlength="60" />
+      <input type="text" th:field="*{frageText}" placeholder="Titel der Frage..." required maxlength="255" />
+      <textarea th:field="*{beschreibung}" placeholder="Beschreibe deine Frage genauer..." required rows="4"></textarea>
+      <div class="modal-actions">
+        <button type="button" class="link-btn" onclick="document.getElementById('frageModal').style.display='none'">Abbrechen</button>
+        <button type="submit" class="primary-btn">Frage stellen</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="page">
+  <header class="hero">
+    <div class="hero-text">
+      <h1>Fragenübersicht</h1>
+    </div>
+    <div class="theme-switcher">
+      <button class="theme-btn" data-theme-btn="light" title="Hell">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <button class="theme-btn" data-theme-btn="dark" title="Dunkel">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+      <button class="theme-btn" data-theme-btn="system" title="System">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="card table-card">
+    <div class="table-header">
+      <h2>Alle Fragen</h2>
+      <button type="button" class="primary-btn"
+              onclick="document.getElementById('frageModal').style.display='flex'">
+        + Frage stellen
+      </button>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Titel</th>
+            <th>Von</th>
+            <th>Bewertung</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:if="${#lists.isEmpty(fragenListe)}">
+            <td colspan="4" class="empty-state">Noch keine Fragen vorhanden.</td>
+          </tr>
+          <tr th:each="f : ${fragenListe}"
+              class="clickable-row"
+              th:onclick="|window.location.href='@{/fragen/{id}(id=${f.frageId})}'|">
+            <td class="question-text" th:text="${f.frageText}"></td>
+            <td class="author-col" th:text="${f.erstellerName != null ? f.erstellerName : '—'}"></td>
+            <td>
+              <span class="score-badge"
+                    th:with="s=${scores[f.frageId]}"
+                    th:classappend="${s > 0} ? ' positive' : (${s < 0} ? ' negative' : ' neutral')"
+                    th:text="${s > 0} ? '▲ ' + ${s} : (${s < 0} ? '▼ ' + ${-s} : '— 0')">0</span>
+            </td>
+            <td class="action-col" onclick="event.stopPropagation()">
+              <a class="link-btn" th:href="@{/fragen/{id}(id=${f.frageId})}">Öffnen</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

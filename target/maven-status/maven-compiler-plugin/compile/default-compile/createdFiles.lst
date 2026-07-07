@@ -1,0 +1,13 @@
+fragenForum/model/Frage.class
+fragenForum/controller/AntwortController.class
+fragenForum/repository/VoteRepository.class
+fragenForum/model/Antwort.class
+fragenForum/model/Vote.class
+fragenForum/repository/KommentarRepository.class
+fragenForum/controller/VoteController.class
+fragenForum/model/Kommentar.class
+fragenForum/service/AntwortService.class
+fragenForum/service/FragenService.class
+fragenForum/controller/KommentarController.class
+fragenForum/service/KommentarService.class
+fragenForum/service/VoteService.class
