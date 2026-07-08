@@ -99,4 +99,10 @@
     </addColumn>
   </changeSet>
 
+<changeSet id="13" author="yw">
+  <modifyDataType tableName="Antwort"
+                  columnName="antworttext"
+                  newDataType="varchar(2000)"/>
+</changeSet>
+  
 </databaseChangeLog>
